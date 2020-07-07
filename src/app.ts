@@ -9,8 +9,12 @@ import AppError from './errors/AppError';
 
 import createConnection from './database';
 
+import uploadConfig from './config/upload';
+
 createConnection();
 const app = express();
+
+app.use(express.static(uploadConfig.directory));
 
 app.use(express.json());
 app.use(routes);
